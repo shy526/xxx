@@ -1,0 +1,84 @@
+package cn.sun.vo;
+
+public class Product {
+    private String pid;
+    private String pname;
+    private Double pprice;
+    private Integer pnum;
+    private String pimgurl;
+    private String pinfo;
+    private String pcategory;
+
+    //<editor-fold desc="set/get">
+    public String getPid() {
+        return pid;
+    }
+
+    public void setPid(String pid) {
+        this.pid = pid;
+    }
+
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
+
+    public Double getPprice() {
+        return pprice;
+    }
+
+    public void setPprice(Double pprice) {
+        this.pprice = pprice;
+    }
+
+    public Integer getPnum() {
+        return pnum;
+    }
+
+    public void setPnum(Integer pnum) {
+        this.pnum = pnum;
+    }
+
+    public String getPimgurl() {
+        return pimgurl;
+    }
+
+    public void setPimgurl(String pimgurl) {
+        this.pimgurl = pimgurl;
+    }
+
+    public String getPinfo() {
+        return pinfo;
+    }
+
+    public void setPinfo(String pinfo) {
+        this.pinfo = pinfo;
+    }
+
+    public String getPcategory() {
+        return pcategory;
+    }
+
+    public void setPcategory(String pcategory) {
+        this.pcategory = pcategory;
+    }
+
+    //</editor-fold>
+
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "pid='" + pid + '\'' +
+                ", pname='" + pname + '\'' +
+                ", pprice=" + pprice +
+                ", pnum=" + pnum +
+                ", pimgurl='" + pimgurl + '\'' +
+                ", pinfo='" + pinfo + '\'' +
+                ", pcategory='" + pcategory + '\'' +
+                '}';
+    }
+}
