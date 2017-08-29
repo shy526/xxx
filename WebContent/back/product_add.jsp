@@ -22,7 +22,6 @@
 				var url=$(this).attr("href");
 				$.get(url,function(data){
 					$(".content .mCSB_container").append(data); //load new content inside .mCSB_container
-					//scroll-to appended content 
 					$(".content").mCustomScrollbar("scrollTo","h2:last");
 				});
 			});
@@ -50,7 +49,7 @@
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">商品详情</h2>
-       <a href="${app}back/product_list.jsp" class="fr top_rt_btn">返回商品列表</a>
+       <a href="${app}/ProdListServlet" class="fr top_rt_btn">返回商品列表</a>
       </div>
      <section>
       <ul class="ulColumn2">

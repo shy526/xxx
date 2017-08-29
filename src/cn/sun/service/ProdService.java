@@ -32,13 +32,19 @@ public interface ProdService {
 
     /**
      * 获取所有商品
+     * @param name 
+     * @param pcategory 
      * @return
      */
-    List<Product> getProdList(int begin,int end);
+    List<Product> getProdList(String pcategory, String name, int begin,int end);
 
     /**
      * 获取总页数
+     * @param name 
+     * @param pcategory 
      * @return
      */
-    int getpage();
+    int getpage(String pcategory, String name);
+    
+
 }

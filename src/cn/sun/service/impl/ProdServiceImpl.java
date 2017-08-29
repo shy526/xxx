@@ -78,13 +78,24 @@ public class ProdServiceImpl implements ProdService {
         pd.saveProduct(product);
     }
 
-    @Override
-    public List<Product> getProdList(int begin,int end) {
-        return pd.selectProduct(begin,end);
-    }
+
 
     @Override
-    public int getpage() {
-        return pd.getCount();
+    public int getpage(String pcategory, String name) {
+		if("全部商品".equals(pcategory)) {
+			pcategory=null;
+		}
+        return pd.getCount(pcategory,name);
     }
+
+	@Override
+	public List<Product> getProdList(String pcategory, String name, int begin, int end) {
+			if("全部商品".equals(pcategory)) {
+				pcategory=null;
+			}
+	       return pd.selectProduct(pcategory,name,begin,end);
+		
+	}
+
+
 }

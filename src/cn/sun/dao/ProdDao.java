@@ -12,10 +12,13 @@ public interface ProdDao {
     void saveProduct(Product product);
 
     /**
-     * 获取商品
+     *  动态sql获取商品
+     * @param name 
+     * @param pcategory 
      * @return
      */
-    List<Product> selectProduct(int begin,int end);
+    List<Product> selectProduct(String pcategory, String name, int begin,int end);
 
-    int getCount();
+    int getCount(String pcategory, String name);
+
 }

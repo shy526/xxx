@@ -17,26 +17,32 @@ import java.util.List;
 @WebServlet(name = "ProdListServlet",urlPatterns = "/ProdListServlet")
 public class ProdListServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	doGet(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProdService instence = BasicFactory.factory.getInstence(ProdService.class);
         String begin = request.getParameter("begin");
-        int now=0;
+        String pcategory = request.getParameter("pcategory");
+        String name = request.getParameter("name");
+        int now=1;
         if (!VoUtils.isNull(begin)){
            now=Integer.parseInt(begin);
         }
-        List<Product> list=instence.getProdList(now*15,15);
-        int pagesum=instence.getpage();
+        List<Product> list=instence.getProdList(pcategory,name,now*15,15);
+        int pagesum=instence.getpage(pcategory,name);
         if (pagesum>15){
             pagesum/=15;
         }else{
             pagesum=1;
         }
-        if ((now+1)>pagesum){
+        if ((now+1)>pagesum){   //大于总页数就一也
             now--;
         }
-        request.setAttribute("prodlist",list);
+        System.out.println(now);
+        request.setAttribute("pcategory",pcategory);  
+        request.setAttribute("name",name);
+        request.setAttribute("prodlist",list);  
         request.setAttribute("pagesum",pagesum);
         request.setAttribute("now",now);
         System.out.println("list.size() = " + list.size());
