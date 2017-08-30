@@ -25,26 +25,30 @@ public class ProdListServlet extends HttpServlet {
         String begin = request.getParameter("begin");
         String pcategory = request.getParameter("pcategory");
         String name = request.getParameter("name");
-        int now=1;
+        int now=0;
         if (!VoUtils.isNull(begin)){
            now=Integer.parseInt(begin);
         }
         List<Product> list=instence.getProdList(pcategory,name,now*15,15);
+        
         int pagesum=instence.getpage(pcategory,name);
+        System.out.println(pagesum);
+        int sum=pagesum;
         if (pagesum>15){
             pagesum/=15;
+            if(sum%15>0) {
+            	pagesum++;    //无法整除时补一页
+            }
         }else{
             pagesum=1;
         }
-        if ((now+1)>pagesum){   //大于总页数就一也
-            now--;
-        }
-        System.out.println(now);
+        System.out.println(now + "<--now");
+        System.out.println(pagesum + "<--pagesum");
         request.setAttribute("pcategory",pcategory);  
         request.setAttribute("name",name);
         request.setAttribute("prodlist",list);  
         request.setAttribute("pagesum",pagesum);
-        request.setAttribute("now",now);
+        request.setAttribute("now",now==0 ? 2:now+1);
         System.out.println("list.size() = " + list.size());
         request.getRequestDispatcher("/back/product_list.jsp").forward(request, response);
     }

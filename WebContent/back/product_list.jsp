@@ -42,6 +42,15 @@
 				});
 	})(jQuery);
 </script>
+
+	<style type="text/css">
+	.tdinput{
+		width: 70px;
+	
+	
+	}
+	
+	</style>
 </head>
 <body>
 
@@ -53,9 +62,9 @@
 					添加商品</a>
 			</div>
 			<section class="mtb">
-				<form action="" method="post">
+				<form action="${app}/ProdListServlet" method="post">
 					<select class="select" name="pcategory">
-						<option ${pcategory=="全部商品"? "selected='selected'": null} >全部商品</option>
+						<option ${pcategory=="全部商品"? "selected='selected'": null}>全部商品</option>
 						<option ${pcategory=="家用电器"? "selected='selected'": null}>家用电器</option>
 						<option ${pcategory=="汽车用品"? "selected='selected'": null}>汽车用品</option>
 						<option ${pcategory=="食品饮料"? "selected='selected'": null}>食品饮料</option>
@@ -63,10 +72,9 @@
 						<option ${pcategory=="服装服饰"? "selected='selected'": null}>服装服饰</option>
 						<option ${pcategory=="电脑平板"? "selected='selected'": null}>电脑平板</option>
 						<option ${pcategory=="图书杂志"? "selected='selected'": null}>图书杂志</option>
-					</select> 
-					<input type="text" class="textbox textbox_225"
-						name="name" placeholder="输入产品关键词..."  value="${name}"/> 
-						<input type="submit" value="查询"class="group_btn" />
+					</select> <input type="text" class="textbox textbox_225" name="name"
+						placeholder="输入产品关键词..." value="${name}" /> <input type="submit"
+						value="查询" class="group_btn" />
 				</form>
 			</section>
 			<table class="table">
@@ -87,8 +95,8 @@
 							height="50" /></td>
 						<td>${ps.pid}</td>
 						<td class="center">${ps.pname}</td>
-						<td class="center"><strong class="rmb_icon">${ps.pprice}</strong></td>
-						<td class="center">${ps.pnum}</td>
+						<td class="center"><strong class="rmb_icon"><input class="tdinput" type="text" value="${ps.pprice}"></strong></td>
+						<td class="center"><input class="tdinput" type="text" value="${ps.pnum}"> </td>
 						<td class="center">${ps.pcategory}</td>
 						<td class="center">${ps.pinfo}</td>
 						<td class="center"><a href="#" title="删除" class="link_icon">&#101;</a>
@@ -97,13 +105,18 @@
 				</c:forEach>
 			</table>
 			<aside class="paging">
-				<a href="${app}/ProdListServlet?begin=0">第一页</a> <a
-					href="${app}/ProdListServlet?begin=${now>=pagesum ? null:now}">${now>pagesum ? null:now+1}</a>
 				<a
-					href="${app}/ProdListServlet?begin=${(now+1)>=pagesum ? null:now+1}">${now+2>pagesum ? null:now+2}</a>
+					href="${app}/ProdListServlet?begin=0&pcategory=${pcategory}&name=${name}">第一页</a>
+					
 				<a
-					href="${app}/ProdListServlet?begin=${(now+2)>=pagesum ? null:now+2}">${now+3>pagesum ? null:now+3}</a>
-				<a>…</a> <a href="${app}/ProdListServlet?begin=${pagesum}">最后一页</a>
+					href="${app}/ProdListServlet?begin=${now-1>pagesum ? null:now-2}&pcategory=${pcategory}&name=${name}">${now-1>pagesum ? null:now-1}</a>
+				<a
+					href="${app}/ProdListServlet?begin=${(now)>pagesum ? null:now-1}&pcategory=${pcategory}&name=${name}">${now>pagesum ? null:now}</a>
+				<a
+					href="${app}/ProdListServlet?begin=${(now+1)>pagesum ? null:now}&pcategory=${pcategory}&name=${name}">${now+1>pagesum ? null:now+1}</a>
+				<a>…</a> <a
+					href="${app}/ProdListServlet?begin=${pagesum-1}&pcategory=${pcategory}&name=${name}">最后一页${pagesum-1}</a>
+					<!-- 下标从0起算一页 -->
 			</aside>
 		</div>
 	</section>
