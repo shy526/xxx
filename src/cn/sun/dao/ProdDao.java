@@ -20,5 +20,18 @@ public interface ProdDao {
     List<Product> selectProduct(String pcategory, String name, int begin,int end);
 
     int getCount(String pcategory, String name);
+    	
+    
+    /**
+     * 动态修改商品信息
+     * @return 是否修改成功
+     */
+	boolean updateProd(Product p);
+	/**
+	 * 根据id删除商品
+	 * @param id
+	 * @return
+	 */
+	boolean deleteProd(String id);
 
 }

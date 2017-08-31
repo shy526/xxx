@@ -38,19 +38,94 @@
 								$(".content").mCustomScrollbar("scrollTo",
 										$(this).attr("href"));
 							});
-
 				});
 	})(jQuery);
 </script>
 
-	<style type="text/css">
-	.tdinput{
-		width: 70px;
-	
-	
-	}
-	
-	</style>
+<style type="text/css">
+.tdinput {
+	width: 70px;
+}
+</style>
+
+<script type="text/javascript">
+	$(function() {
+		$("input[name='pprice']").blur(function() {
+			var val = $(this).val();
+			var reg = /^[0-9]+\.?[0-9]*$/;
+			if (!reg.test(val)) {
+				alert("你输入的数据不正确");
+				$(this).val($(this).next("input").val());
+			}
+			if (val == $(this).next("input").val()) {
+				return;
+			}
+			if (!confirm("商品单价是否修改为:" + val)) {
+				return;
+			}
+			var id = $(this).next("input").attr("name");
+			$.post("${app}/UpdateProd", {
+				"price" : val,
+				"pid" : id
+			}, function(result) {
+				if (result == "true") {
+					alert("商品单价修改成功")
+					$(this).next("input").val(val);
+				} else {
+					alert("商品单价修改失败");
+					$(this).val($(this).next("input").val());
+				}
+
+			})
+		});
+
+		$("input[name='pnum']").blur(function() {
+			var val = $(this).val();
+			var reg = /^[0-9]+$/;
+			if (!reg.test(val)) {
+				alert("你输入的数据不正确");
+				$(this).val($(this).next("input").val());
+			}
+			if (val == $(this).next("input").val()) {
+				return;
+			}
+			if (!confirm("库存数量是否修改为:" + val)) {
+				return;
+			}
+			var id = $(this).next("input").attr("name");
+			$.post("${app}/UpdateProd", {
+				"pnum" : val,
+				"pid" : id
+			}, function(result) {
+				if (result == "true") {
+					alert("商品数量修改成功")
+					$(this).next("input").val(val);
+				} else {
+					alert("商品数量修改失败");
+					$(this).val($(this).next("input").val());
+				}
+			})
+		});
+
+		$(".link_icon").click(function() {
+			var id = $(this).attr("name");
+			if (!confirm("确定删除此商品id为:" + id)) {
+				return;
+			}
+			var s=this
+			$.post("${app}/DeleteProductService", {"pid" : id}, function(result) {
+				if (result == "true") {
+					alert("商品删除成功")
+					$(s).parent("td").parent("tr").remove();
+				} else {
+					alert("商品删除失败");
+
+				}
+
+			})
+		});
+	});
+</script>
 </head>
 <body>
 
@@ -95,19 +170,26 @@
 							height="50" /></td>
 						<td>${ps.pid}</td>
 						<td class="center">${ps.pname}</td>
-						<td class="center"><strong class="rmb_icon"><input class="tdinput" type="text" value="${ps.pprice}"></strong></td>
-						<td class="center"><input class="tdinput" type="text" value="${ps.pnum}"> </td>
+						<td class="center"><strong class="rmb_icon"> <input
+								id="sun1" name="pprice" class="tdinput" type="text"
+								value="${ps.pprice}"> <input type="hidden"
+								name="${ps.pid}" value="${ps.pprice}">
+
+						</strong></td>
+						<td class="center"><input name="pnum" class="tdinput"
+							type="text" value="${ps.pnum}"> <input type="hidden"
+							name="${ps.pid}" value="${ps.pnum}"></td>
 						<td class="center">${ps.pcategory}</td>
 						<td class="center">${ps.pinfo}</td>
-						<td class="center"><a href="#" title="删除" class="link_icon">&#101;</a>
-						</td>
+						<td class="center"><a href="javascript:void(0)" title="删除" name="${ps.pid}"
+							class="link_icon" >&#101;</a></td>
 					</tr>
 				</c:forEach>
 			</table>
 			<aside class="paging">
 				<a
 					href="${app}/ProdListServlet?begin=0&pcategory=${pcategory}&name=${name}">第一页</a>
-					
+
 				<a
 					href="${app}/ProdListServlet?begin=${now-1>pagesum ? null:now-2}&pcategory=${pcategory}&name=${name}">${now-1>pagesum ? null:now-1}</a>
 				<a
@@ -116,7 +198,7 @@
 					href="${app}/ProdListServlet?begin=${(now+1)>pagesum ? null:now}&pcategory=${pcategory}&name=${name}">${now+1>pagesum ? null:now+1}</a>
 				<a>…</a> <a
 					href="${app}/ProdListServlet?begin=${pagesum-1}&pcategory=${pcategory}&name=${name}">最后一页${pagesum-1}</a>
-					<!-- 下标从0起算一页 -->
+				<!-- 下标从0起算一页 -->
 			</aside>
 		</div>
 	</section>

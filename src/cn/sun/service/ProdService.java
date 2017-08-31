@@ -46,5 +46,21 @@ public interface ProdService {
      */
     int getpage(String pcategory, String name);
     
+    
+    /**
+     * 根据id 修改name和price
+     * @param price 商品单价
+     * @param pnum 商品数量
+     * @param id 商品id
+     * @return
+     */
+	boolean updateProd(String price, String pnum, String id);
+	/**
+	 * 根据商品id删除商品
+	 * @param id
+	 * @return 
+	 */
+	boolean deleteProduct(String id);
+    
 
 }

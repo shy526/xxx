@@ -67,6 +67,52 @@ public class ProdDaoImpl implements ProdDao {
          return DaoUtils.query(sql.toString(),resultSetHandle,list.toArray()); 
     }
 
+	@Override
+	public boolean updateProd(Product p) {
+		StringBuilder sql= new StringBuilder("update tb_product set  ");
+		List<Object> list=new ArrayList<Object>();
+	
+		if(p.getPimgurl()!=null) {
+			sql.append(" pimgurl=?,");
+			list.add(p.getPimgurl());
+		}
+		if(p.getPinfo()!=null) {
+			sql.append(" pinfo=?,");
+			list.add(p.getPinfo());
+		}
+		if(p.getPname()!=null) {
+			sql.append(" pname=?,");
+			list.add(p.getPname());
+		}
+		if(p.getPnum()!=null) {
+			sql.append(" pnum=?,");
+			list.add(p.getPnum());
+		}
+		
+		if(p.getPprice()!=null) {
+			sql.append(" pprice=?,");
+			list.add(p.getPprice());
+		}
+		sql.deleteCharAt(sql.length()-1);
+		sql.append("  where pid=? ");
+		list.add(p.getPid());
+		 int re = DaoUtils.upDate(sql.toString(), list.toArray());
+		 if(re!=0) {
+			 return true;
+		 }
+		 return false;
+	}
+
+	@Override
+	public boolean deleteProd(String id) {
+		String sql="delete from tb_product where pid=?";
+		int re=DaoUtils.upDate(sql, id);
+		if(re!=0) {
+			return true;
+		}
+		return false;
+	}
+
 	
 
 }
