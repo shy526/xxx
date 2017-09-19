@@ -20,7 +20,7 @@ import cn.sun.utils.RandomVerifyUtils;
 public class AddProduct {
     public static void main(String[] args) {
 
-        String repath="C:\\Users\\honey\\Desktop\\xxxx\\web";
+        String  repath = AddProduct.class.getClassLoader().getResource(".").getPath();
         String[] cate={"手机数码","电脑平板","家用电器","汽车用品","食品饮料","图书杂志","服装服饰","理财产品"} ;
        for (int ii=0;ii<50;ii++) {
            BufferedImage bi =new BufferedImage(600,600,BufferedImage.TYPE_3BYTE_BGR);
@@ -35,7 +35,8 @@ public class AddProduct {
            for (int i = 0; i < str1.length(); i++) {
                path.append("/").append(str1.charAt(i));
            }
-           path.insert(0, repath);
+           //获取上级目录
+           path.insert(0, new File(repath).getParentFile().getParentFile().toPath().toString());
            File file = new File(path.toString());
            file.mkdirs();
            path.append(UUID.randomUUID().toString()).append(".jpg");
@@ -50,7 +51,7 @@ public class AddProduct {
                        name,
                        RandomVerifyUtils.RandomInt(0, 10000),
                        RandomVerifyUtils.RandomInt(0, 100000),
-                       path.delete(0, repath.length()).toString(),
+                       path.delete(0,new File(repath).getParentFile().getParentFile().toPath().toString().length()).toString(),
                        Integer.toHexString(UUID.randomUUID().toString().hashCode()),
                        cate[RandomVerifyUtils.RandomInt(0, cate.length - 1)]);
            } catch (IOException e) {
