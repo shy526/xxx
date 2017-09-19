@@ -34,4 +34,13 @@ public interface ProdDao {
 	 */
 	boolean deleteProd(String id);
 
+	/**
+	 * 动态sql 查询数据
+	 * @param priceMax  价格max
+	 * @param priceMin		价格min
+	 * @param pcategory	类型
+	 * @param OrderBy	排序
+	 * @return
+	 */
+	List<Product> selectProductList(int priceMax, int priceMin, String pcategory,String OrderBy);
 }

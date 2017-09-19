@@ -81,7 +81,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="index.jsp">主页</a></li>
                     <li><a href="cart.html">购物车</a></li>
-                    <li><a href="${app}/shop-brand.jsp">商品</a></li>
+                    <li><a href="${app}/FindprodServlet">商品</a></li>
                     <li><a href="contact.html">联系我们</a></li>
                 </ul>
                 <c:if test="${sessionScope.user!=null}">

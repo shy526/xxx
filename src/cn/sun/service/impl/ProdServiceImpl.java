@@ -133,4 +133,12 @@ public class ProdServiceImpl implements ProdService {
 		return pd.deleteProd(id);
 	}
 
+	@Override
+	public List<Product> selectProductList(int priceMax, int priceMin, String pcategory, String OrderBy) {
+		if ("全部商品".equalsIgnoreCase(pcategory)){
+			pcategory=null;
+		}
+		return pd.selectProductList(priceMax, priceMin, pcategory,OrderBy);
+	}
+
 }

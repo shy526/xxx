@@ -7,6 +7,7 @@ import cn.sun.utils.ResultSetHandle;
 import cn.sun.utils.VoUtils;
 import cn.sun.vo.Product;
 
+import javax.persistence.OrderBy;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -113,6 +114,25 @@ public class ProdDaoImpl implements ProdDao {
 		return false;
 	}
 
-	
+	@Override
+	public List<Product> selectProductList(int priceMax, int priceMin, String pcategory,String OrderBy) {
+		StringBuilder sql= new StringBuilder("select pid,pname,pprice,pnum,pimgurl,pinfo,pcategory from tb_product  where 1=1 ");
+		List<Object> list=new ArrayList<Object>();
+		sql.append(" and pprice >= ?");
+		list.add(priceMin);
+		if (priceMax>priceMin){
+			sql.append(" and pprice <= ?");
+			list.add(priceMax);
+		}
+		if (!VoUtils.isNull(pcategory)){
+			sql.append(" and pcategory = ?");
+			list.add(pcategory);
+		}
+		if (!VoUtils.isNull(OrderBy)){
+			sql.append(" order by "+OrderBy);
+		}
+		System.out.println("sql.toString() = " + sql);
+		return DaoUtils.query(sql.toString(),new BeanListHandle<Product>(Product.class),list.toArray());
+	}
 
 }

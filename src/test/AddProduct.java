@@ -49,11 +49,11 @@ public class AddProduct {
                DaoUtils.upDate(sql,
                        UUID.randomUUID().toString(),
                        name,
+                       RandomVerifyUtils.RandomInt(0, 450),
                        RandomVerifyUtils.RandomInt(0, 10000),
-                       RandomVerifyUtils.RandomInt(0, 100000),
                        path.delete(0,new File(repath).getParentFile().getParentFile().toPath().toString().length()).toString(),
                        Integer.toHexString(UUID.randomUUID().toString().hashCode()),
-                       cate[RandomVerifyUtils.RandomInt(0, cate.length - 1)]);
+                       cate[RandomVerifyUtils.RandomInt(0, cate.length)]);
            } catch (IOException e) {
                e.printStackTrace();
            }
