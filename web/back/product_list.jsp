@@ -197,7 +197,7 @@
 				<a
 					href="${app}/ProdListServlet?begin=${(now+1)>pagesum ? null:now}&pcategory=${pcategory}&name=${name}">${now+1>pagesum ? null:now+1}</a>
 				<a>…</a> <a
-					href="${app}/ProdListServlet?begin=${pagesum-1}&pcategory=${pcategory}&name=${name}">最后一页${pagesum-1}</a>
+					href="${app}/ProdListServlet?begin=${pagesum-1}&pcategory=${pcategory}&name=${name}">最后一页</a>
 				<!-- 下标从0起算一页 -->
 			</aside>
 		</div>
