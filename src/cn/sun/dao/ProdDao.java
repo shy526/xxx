@@ -43,4 +43,6 @@ public interface ProdDao {
 	 * @return
 	 */
 	List<Product> selectProductList(int priceMax, int priceMin, String pcategory,String OrderBy);
+
+	Product findProductById(String id);
 }

@@ -141,4 +141,10 @@ public class ProdServiceImpl implements ProdService {
 		return pd.selectProductList(priceMax, priceMin, pcategory,OrderBy);
 	}
 
+	@Override
+	public Product findProductById(String id) {
+		return pd.findProductById(id);
+	}
+
+
 }

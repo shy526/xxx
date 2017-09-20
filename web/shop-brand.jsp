@@ -101,17 +101,28 @@
                             <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
                         </div>
                     </div>
-
-                    <div class="short_by_left">
-                        <h4><i class="lnr lnr-funnel"></i>排序</h4>
-                        <select class="selectpicker" name="orderBy">
-                            <option value=""> 默 认</option>
-                            <option value="pname desc" <c:if test="${orderBy=='pname desc'}" >selected="selected"</c:if> >按商品名称(降序)</option>
-                            <option value="pprice"  <c:if test="${orderBy=='pprice'}" >selected="selected"</c:if> >按商品价格(升序)</option>
-                            <option value="pprice desc"  <c:if test="${orderBy=='pprice desc'}" >selected="selected"</c:if> >按商品价格(降序)</option>
-                        </select>
+                    <div class="s_widget s_widget_price_range">
+                        <div class="s_widget_tittle">
+                            <h4><i class="lnr lnr-funnel"></i>排序</h4>
+                        </div>
+                        <div class="range_slider">
+                            <div class="short_by_left">
+                                <select class="selectpicker" name="orderBy">
+                                    <option value=""> 默 认</option>
+                                    <option value="pname desc"
+                                            <c:if test="${orderBy=='pname desc'}">selected="selected"</c:if> >按商品名称(降序)
+                                    </option>
+                                    <option value="pprice"
+                                            <c:if test="${orderBy=='pprice'}">selected="selected"</c:if> >按商品价格(升序)
+                                    </option>
+                                    <option value="pprice desc"
+                                            <c:if test="${orderBy=='pprice desc'}">selected="selected"</c:if> >按商品价格(降序)
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-
+                    <%--热门商品--%>
                     <div class="s_widget s_widget_t_product">
                         <div class="s_widget_tittle">
                             <h4>热门 产品</h4>
@@ -187,27 +198,36 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="item_t_product">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="#">
+                                            <img class="media-object" src="img/product/t-product/t-product-5.jpg"
+                                                 alt="">
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <a href="#"><h4>Polo t-shirt</h4></a>
+                                        <h5>$34.50</h5>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-9">
-                <div class="short_by_listing_area">
+            <%--商品展示--%>
 
-                    <div class="middle_bar">
-                    </div>
-                </div>
-                <div class="men_clothing_add">
-                    <img src="img/add_image/home-2-add.jpg" alt="">
-                </div>
+            <div class="col-md-9">
                 <div class="men_clothing_tittle">
                     <h2>${pcategory==null ? 所有商品:pcategory}</h2>
                 </div>
+
                 <div class="men_clothing_product_inner row">
-                    <c:forEach items="${prodList}" var="p">
+                    <c:forEach items="${prodList}" var="p" varStatus="ss" >
                         <div class="col-md-4 col-xs-6">
                             <div class="men_clothing_product_item">
-                                <a class="men_item_image" href="#">
+                                <a class="men_item_image" href="${app}/produIfoServlet?id=${p.pid}">
                                     <img src="${app}/ImgServlet?imgurl=${p.pimgurl}" alt="">
                                     <img class="secondary_img" src="${app}/ImgServlet?imgurl=${p.pimgurl}" alt="">
                                 </a>
@@ -221,8 +241,19 @@
                                 </div>
                             </div>
                         </div>
+          <%--              <c:if test="${(ss.index+1)%9==0}" >
+                            <div class="short_by_listing_area " style=" clear：both；">
+                                <div class="middle_bar">
+                                </div>
+                            </div>
+                            <div class="men_clothing_add">
+                                <img src="img/add_image/home-2-add.jpg" alt="">
+                            </div>
+                        </c:if>--%>
                     </c:forEach>
+
                 </div>
+
 
                 <%--     <nav aria-label="Page navigation">
                          <ul class="pagination product_pagination">
@@ -245,6 +276,7 @@
                          </ul>
                      </nav>--%>
             </div>
+
         </div>
     </div>
 </section>
@@ -339,14 +371,16 @@
         $(".sun_onclick").click(function () {
             var pcategory = $(this).attr("pcategory");
             var orderBy = $("select[name='orderBy']").val();
-            var maxMin=$("#amount").val();
+            var maxMin = $("#amount").val();
             var split = maxMin.split(/[ \t\n\x0B\f\r]+/);
-           var min=split[0].slice(1,split[0].length);
-            var max=split[1].slice(1,split[1].length);
-            location.href = "${app}/FindprodServlet?pcategory="+ pcategory + "&orderBy=" + orderBy+ "&priceMin="+min+ "&priceMax="+max+"&minlift";
+            var min = split[0].slice(1, split[0].length);
+            var max = split[1].slice(1, split[1].length);
+            location.href = "${app}/FindprodServlet?pcategory=" + pcategory + "&orderBy=" + orderBy + "&priceMin=" + min + "&priceMax=" + max;
         })
         <c:if test="${priceMin!=''}">
-        $("#amount").val("$"+${priceMin}+"                       "+"$"+${priceMax})
+        $("#amount").val("$"+${priceMin}+
+        "                       " + "$" +
+        ${priceMax})
         </c:if>
     });
 

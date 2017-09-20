@@ -1,10 +1,7 @@
 package cn.sun.dao.impl;
 
 import cn.sun.dao.ProdDao;
-import cn.sun.utils.BeanListHandle;
-import cn.sun.utils.DaoUtils;
-import cn.sun.utils.ResultSetHandle;
-import cn.sun.utils.VoUtils;
+import cn.sun.utils.*;
 import cn.sun.vo.Product;
 
 import javax.persistence.OrderBy;
@@ -133,6 +130,12 @@ public class ProdDaoImpl implements ProdDao {
 		}
 		System.out.println("sql.toString() = " + sql);
 		return DaoUtils.query(sql.toString(),new BeanListHandle<Product>(Product.class),list.toArray());
+	}
+
+	@Override
+	public Product findProductById(String id) {
+    	String sql="select pid,pname,pprice,pnum,pimgurl,pinfo,pcategory from tb_product  where pid=?";
+		return DaoUtils.query(sql,new BeanHandle<Product>(Product.class),id);
 	}
 
 }

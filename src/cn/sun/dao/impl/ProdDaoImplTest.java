@@ -5,12 +5,14 @@ import org.junit.Test;
 
 import java.util.List;
 
+
 import static org.junit.Assert.*;
 
 /**
  * Created by Administrator on 2017/9/19.
  */
 public class ProdDaoImplTest {
+
     @Test
     public void selectProductList() throws Exception {
         ProdDaoImpl udi=new ProdDaoImpl();
