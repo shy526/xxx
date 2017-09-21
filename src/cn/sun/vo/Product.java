@@ -8,6 +8,15 @@ public class Product {
     private String pimgurl;
     private String pinfo;
     private String pcategory;
+    private String pcategorys;
+
+    public String getPcategorys() {
+        return pcategorys;
+    }
+
+    public void setPcategorys(String pcategorys) {
+        this.pcategorys = pcategorys;
+    }
 
     //<editor-fold desc="set/get">
     public String getPid() {

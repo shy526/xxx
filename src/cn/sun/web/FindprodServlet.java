@@ -32,14 +32,21 @@ public class FindprodServlet extends HttpServlet {
         System.out.println(json);
         reader.close();
         ProductConfig  config=new ProductConfig();
+        ObjectMapper mapper=new ObjectMapper();
         if (!VoUtils.isNull(json)){
-            ObjectMapper mapper=new ObjectMapper();
               config = mapper.readValue(json, ProductConfig.class);
-            System.out.println("productConfig = " + config);
         }
         ProdService prodService= BasicFactory.factory.getInstence(ProdService.class);
         List<Product> products = prodService.selectProductList(config.getMax(), config.getMin(), config.getPcategory(), config.getOrderBy());
-        request.setAttribute("prodList",products);
-        request.getRequestDispatcher("/shop-brand.jsp").forward(request, response);
+        if (VoUtils.isNull(json)){
+            request.setAttribute("prodList",products);
+            request.setAttribute("pcategory","全部商品");
+            request.getRequestDispatcher("/shop-brand.jsp").forward(request, response);
+        }
+        products.get(0).setPcategorys(config.getPcategory());
+        String jsonList = mapper.writeValueAsString(products);//转换成json 根据getxxx生成js对象
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(jsonList);
     }
 }

@@ -223,9 +223,9 @@
                     <h2>${pcategory==null ? 所有商品:pcategory}</h2>
                 </div>
 
-                <div class="men_clothing_product_inner row">
+                <div class="men_clothing_product_inner row" id="sun_e">
                     <c:forEach items="${prodList}" var="p" varStatus="ss" >
-                        <div class="col-md-4 col-xs-6">
+                        <div class="col-md-4 col-xs-6" >
                             <div class="men_clothing_product_item">
                                 <a class="men_item_image" href="${app}/produIfoServlet?id=${p.pid}">
                                     <img src="${app}/ImgServlet?imgurl=${p.pimgurl}" alt="">
@@ -365,8 +365,32 @@
 <script src="${app}/vendors/wow/wow.min.js"></script>
 
 <script src="${app}/js/theme.js"></script>
-    <script src="js/json2.js" ></script>
+    <script src="${app}/js/json2.js" ></script>
 <script>
+    function productAdd($element,data) {
+        $element.empty();
+        alert("sc")
+        var html;
+        for (var i=0;i<data.length;i++){
+            html="<div class=\"col-md-4 col-xs-6\">" +
+                "                            <div class=\"men_clothing_product_item\">" +
+                "                                <a class=\"men_item_image\" href=\"${app}/produIfoServlet?id="+data[i].pid+"\">" +
+                "                                    <img src=\"${app}/ImgServlet?imgurl="+data[i].pimgurl+"\" alt=\"\">" +
+                "                                    <img class=\"secondary_img\" src=\"${app}/ImgServlet?imgurl="+data[i].pimgurl+"\" alt=\"\">" +
+                "                                </a>" +
+                "                                <div class=\"men_item_content\">" +
+                "                                    <a href=\"#\"><h3>"+data[i].pname+"</h3></a>" +
+                "                                    <h4>US $"+data[i].pprice+"</h4>" +
+                "                                    <div class=\"favourite_icon\">" +
+                "                                        <a class=\"active\" href=\"#\"><i class=\"lnr lnr-cart\"></i></a>" +
+                "                                        <a href=\"#\"><i class=\"lnr lnr-heart\"></i></a>" +
+                "                                    </div>" +
+                "                                </div>" +
+                "                            </div>" +
+                "                        </div>"
+            $element.append(html)
+        }
+    }
     $(function () {
         //搜索
         $(".sun_onclick").click(function () {
@@ -383,12 +407,14 @@
                 "max": max
             }
             $.ajax({
-             type: "POST",
-             url: "${app}/FindprodServlet",
-             dataType: "json",
-             contentType: "application/json",
-             data: JSON.stringify(jsonDate),
-             success: function (date) {
+                type: "POST",
+                url: "${app}/FindprodServlet",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(jsonDate), //json2中将js对象转换为json串
+                success: function (date) {
+                 $(".men_clothing_tittle h2").text(date[0].pcategorys)
+                 productAdd($("#sun_e"),date);
              }
              });
            /* location.href = "${app}/FindprodServlet?pcategory=" + pcategory + "&orderBy=" + orderBy + "&priceMin=" + min + "&priceMax=" + max;
