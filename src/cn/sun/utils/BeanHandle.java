@@ -31,7 +31,7 @@ public class BeanHandle<T> implements  ResultSetHandle<T>{
                     try {
                         m.invoke(obj,rs.getObject(name));
                     } catch (Exception e) { //预防属性不对应而抛出的异常
-                        System.out.println(name+":"+e.getMessage());
+                        System.out.println(name+":"+e.getMessage()+":解析异常");
                         continue;   //跳过不对应
                     }
                 }

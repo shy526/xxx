@@ -9,7 +9,7 @@ import cn.sun.vo.User;
  * Userdao 实现类
  * Created by Administrator on 2017/8/17.
  */
-public class UserDaoimpl implements UserDao{
+public class UserDaoImpl implements UserDao{
     @Override
     public User finduserByUname(String uname) {
         String sql="select uid,uname,upaw,unickname,uemail from tb_user where uname=? ";

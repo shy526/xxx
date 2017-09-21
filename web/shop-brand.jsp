@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <link rel="icon" href="img/favicon.png" type="image/x-icon"/>
+    <link rel="icon" href="${app}/img/favicon.png" type="image/x-icon"/>
 
     <title></title>
 
@@ -18,23 +18,23 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
 
     <!-- Linearicons -->
-    <link href="vendors/Linearicons/style.css" rel="stylesheet">
+    <link href="${app}/vendors/Linearicons/style.css" rel="stylesheet">
     <!-- fontawesome -->
-    <link href="vendors/fontawesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${app}/vendors/fontawesome/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="${app}/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Select -->
-    <link href="vendors/bootstrap-selector/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="${app}/vendors/bootstrap-selector/css/bootstrap-select.min.css" rel="stylesheet">
     <!-- Camera Slider -->
-    <link href="vendors/camera-slider/css/camera.css" rel="stylesheet">
+    <link href="${app}/vendors/camera-slider/css/camera.css" rel="stylesheet">
     <!-- Animate css -->
-    <link href="vendors/animate-css/animate.css" rel="stylesheet">
+    <link href="${app}/vendors/animate-css/animate.css" rel="stylesheet">
     <!-- jQuery UI -->
-    <link href="vendors/jquery-ui/css/jquery-ui.css" rel="stylesheet">
+    <link href="${app}/vendors/jquery-ui/css/jquery-ui.css" rel="stylesheet">
 
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
+    <link href="${app}/css/style.css" rel="stylesheet">
+    <link href="${app}/css/responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,7 +43,7 @@
     <script src="http://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<sc>
 <!--==========First Header==========-->
 <%@include file="/First_Header.jsp" %>
 <!--==========First Header==========-->
@@ -132,7 +132,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#">
-                                            <img class="media-object" src="img/product/t-product/t-product-1.jpg"
+                                            <img class="media-object" src="${app}/img/product/t-product/t-product-1.jpg"
                                                  alt="">
                                         </a>
                                     </div>
@@ -146,7 +146,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#">
-                                            <img class="media-object" src="img/product/t-product/t-product-2.jpg"
+                                            <img class="media-object" src="${app}/img/product/t-product/t-product-2.jpg"
                                                  alt="">
                                         </a>
                                     </div>
@@ -160,7 +160,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#">
-                                            <img class="media-object" src="img/product/t-product/t-product-3.jpg"
+                                            <img class="media-object" src="${app}/img/product/t-product/t-product-3.jpg"
                                                  alt="">
                                         </a>
                                     </div>
@@ -174,7 +174,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#">
-                                            <img class="media-object" src="img/product/t-product/t-product-4.jpg"
+                                            <img class="media-object" src="${app}/img/product/t-product/t-product-4.jpg"
                                                  alt="">
                                         </a>
                                     </div>
@@ -188,7 +188,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#">
-                                            <img class="media-object" src="img/product/t-product/t-product-5.jpg"
+                                            <img class="media-object" src="${app}/img/product/t-product/t-product-5.jpg"
                                                  alt="">
                                         </a>
                                     </div>
@@ -202,7 +202,7 @@
                                 <div class="media">
                                     <div class="media-left">
                                         <a href="#">
-                                            <img class="media-object" src="img/product/t-product/t-product-5.jpg"
+                                            <img class="media-object" src="${app}/img/product/t-product/t-product-5.jpg"
                                                  alt="">
                                         </a>
                                     </div>
@@ -336,7 +336,7 @@
             </div>
             <div class="footer_business_card">
                 <div class="card_image row">
-                    <img src="img/card/card.png" alt="">
+                    <img src="${app}/img/card/card.png" alt="">
                 </div>
             </div>
         </div>
@@ -351,20 +351,21 @@
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery-1.12.3.min.js"></script>
+<script src="${app}/js/jquery-1.12.3.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="${app}/js/bootstrap.min.js"></script>
 <!-- Bootstrap Select -->
-<script src="vendors/bootstrap-selector/js/bootstrap-select.min.js"></script>
+<script src="${app}/vendors/bootstrap-selector/js/bootstrap-select.min.js"></script>
 <!-- jquery easing -->
-<script src="js/jquery.easing.min.js"></script>
+<script src="${app}/js/jquery.easing.min.js"></script>
 <!-- Camera Slider -->
-<script src="vendors/camera-slider/js/camera.min.js"></script>
+<script src="${app}/vendors/camera-slider/js/camera.min.js"></script>
 <!-- jQuery UI -->
-<script src="vendors/jquery-ui/js/jquery-ui.js"></script>
-<script src="vendors/wow/wow.min.js"></script>
+<script src="${app}/vendors/jquery-ui/js/jquery-ui.js"></script>
+<script src="${app}/vendors/wow/wow.min.js"></script>
 
-<script src="js/theme.js"></script>
+<script src="${app}/js/theme.js"></script>
+    <script src="js/json2.js" ></script>
 <script>
     $(function () {
         //搜索
@@ -375,13 +376,28 @@
             var split = maxMin.split(/[ \t\n\x0B\f\r]+/);
             var min = split[0].slice(1, split[0].length);
             var max = split[1].slice(1, split[1].length);
-            location.href = "${app}/FindprodServlet?pcategory=" + pcategory + "&orderBy=" + orderBy + "&priceMin=" + min + "&priceMax=" + max;
-        })
-        <c:if test="${priceMin!=''}">
+            var jsonDate = {
+                "pcategory": pcategory,
+                "orderBy": orderBy,
+                "min": min,
+                "max": max
+            }
+            $.ajax({
+             type: "POST",
+             url: "${app}/FindprodServlet",
+             dataType: "json",
+             contentType: "application/json",
+             data: JSON.stringify(jsonDate),
+             success: function (date) {
+             }
+             });
+           /* location.href = "${app}/FindprodServlet?pcategory=" + pcategory + "&orderBy=" + orderBy + "&priceMin=" + min + "&priceMax=" + max;
+ */       })
+ /*       <c:if test="${priceMin!=''}">
         $("#amount").val("$"+${priceMin}+
         "                       " + "$" +
         ${priceMax})
-        </c:if>
+        </c:if>*/
     });
 
 </script>
