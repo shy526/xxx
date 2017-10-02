@@ -417,13 +417,8 @@
                  productAdd($("#sun_e"),date);
              }
              });
-           /* location.href = "${app}/FindprodServlet?pcategory=" + pcategory + "&orderBy=" + orderBy + "&priceMin=" + min + "&priceMax=" + max;
- */       })
- /*       <c:if test="${priceMin!=''}">
-        $("#amount").val("$"+${priceMin}+
-        "                       " + "$" +
-        ${priceMax})
-        </c:if>*/
+      })
+
     });
 
 </script>

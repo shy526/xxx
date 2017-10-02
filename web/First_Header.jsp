@@ -12,9 +12,9 @@
 <title></title>
 
 <!-- fonts -->
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,300italic,500,400italic,700,900' rel='stylesheet'
+<%--<link href='https://fonts.googleapis.com/css?family=Roboto:400,300italic,500,400italic,700,900' rel='stylesheet'
       type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700' rel='stylesheet' type='text/css'>--%>
 
 <!-- Linearicons -->
 <link href="vendors/Linearicons/style.css" rel="stylesheet">
