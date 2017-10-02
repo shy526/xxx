@@ -70,8 +70,8 @@ pageEncoding="utf-8"%>
 				<input class="sunsp" type="submit" value="购买" />
 				<div id="sun_ss">
 					<input type="hidden" name="pid" value=""/>
-					<a class="active" href="#"><i class="lnr lnr-cart"></i></a>
-					<a href="#"><i class="lnr lnr-heart"></i></a>
+					<a class="active" href="javascript:void(0)"><i class="lnr lnr-cart"></i></a>
+					<a href="javascript:void(0)"><i class="lnr lnr-heart"></i></a>
 				</div>
 			</div>
 			</div>
@@ -81,8 +81,11 @@ pageEncoding="utf-8"%>
 	</div>
 </body>
 </html>
-<script src="${app}js/jquery.js"> </script>
+<script src="${app}/js/jquery.js" ></script>
+<script src="${app}/js/json2.js" ></script>
 <script>
+
+
 	$(function () {
 		$("#addNum").click(function () {
             var num = $(this).prev().prev().val();
@@ -120,6 +123,27 @@ pageEncoding="utf-8"%>
             $(this).next().val(num);
 
         })
-    })
+        $("#sun_ss input[name='pid']").next().click(function () {
+            var pid="${p.pid}";
+            var pnum=$("#hbuyNumInp").val();
+            var jsonDate={
+                "pid": pid,
+				"pnum":pnum
+			};
+            $.ajax({
+                type: "POST",
+                url: "${app}/catadd",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(jsonDate), //json2中将js对象转换为json串
+                success: function (d) {
+                   alert(d);
+                }
+            });
+
+        });
+
+	})
+
 
 </script>

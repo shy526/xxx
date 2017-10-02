@@ -90,4 +90,19 @@ public class Product {
                 ", pcategory='" + pcategory + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+
+        return pid != null ? pid.equals(product.pid) : product.pid == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return pid != null ? pid.hashCode() : 0;
+    }
 }
