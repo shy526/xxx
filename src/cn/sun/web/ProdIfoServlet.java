@@ -13,10 +13,12 @@ import java.io.IOException;
 
 @WebServlet(name = "ProdIfoServlet",urlPatterns = "/produIfoServlet")
 public class ProdIfoServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         ProdService instence = BasicFactory.factory.getInstence(ProdService.class);

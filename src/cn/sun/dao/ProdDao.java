@@ -39,10 +39,10 @@ public interface ProdDao {
 	 * @param priceMax  价格max
 	 * @param priceMin		价格min
 	 * @param pcategory	类型
-	 * @param OrderBy	排序
+	 * @param orderBy	排序
 	 * @return
 	 */
-	List<Product> selectProductList(int priceMax, int priceMin, String pcategory,String OrderBy);
+	List<Product> selectProductList(int priceMax, int priceMin, String pcategory,String orderBy);
 
 	Product findProductById(String id);
 }

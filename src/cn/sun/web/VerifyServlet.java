@@ -3,7 +3,6 @@ package cn.sun.web;
 import cn.sun.utils.RandomVerifyUtils;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +14,15 @@ import java.io.IOException;
  */
 @WebServlet(name = "VerifyServlet",urlPatterns = "/VerifyServlet")
 public class VerifyServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String s = RandomVerifyUtils.RandomImg(120,40,response.getOutputStream());
+        String s = RandomVerifyUtils.randomImg(120,40,response.getOutputStream());
         request.getSession().setAttribute("code",s);
     }
 }

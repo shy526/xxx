@@ -18,9 +18,9 @@ import java.util.Map;
 
 @WebServlet(name = "CatAddServlet", urlPatterns = "/catadd")
 public class CatAddServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //response.setContentType("application/json");
-        //response.setCharacterEncoding("UTF-8");
+
         BufferedReader reader = request.getReader();
         String json = reader.readLine();
         System.out.println(json);
@@ -56,6 +56,7 @@ public class CatAddServlet extends HttpServlet {
 
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

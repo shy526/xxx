@@ -10,6 +10,7 @@ import java.io.IOException;
 
 @WebServlet(name = "LogoutServlet",urlPatterns = "/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Object user = request.getSession().getAttribute("user");
         if (user!=null){
@@ -22,6 +23,7 @@ public class LogoutServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath()+"/index.jsp");
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
 

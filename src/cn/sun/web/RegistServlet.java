@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Enumeration;
 
 /**
  * 注册
@@ -21,8 +20,9 @@ import java.util.Enumeration;
  */
 @WebServlet(name = "RegistServlet",urlPatterns = "/Regist")
 public class RegistServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = VoUtils.ParseVo(User.class, request.getParameterMap());
+        User user = VoUtils.parseVo(User.class, request.getParameterMap());
         UserService us = BasicFactory.factory.getInstence(UserService.class);
         System.out.println("us = " + user.toString());
         String token = request.getParameter("token");
@@ -48,6 +48,7 @@ public class RegistServlet extends HttpServlet {
         response.setHeader("refresh","3;url="+request.getContextPath()+"index.jsp");
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

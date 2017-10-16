@@ -112,7 +112,7 @@ public class ProdDaoImpl implements ProdDao {
 	}
 
 	@Override
-	public List<Product> selectProductList(int priceMax, int priceMin, String pcategory,String OrderBy) {
+	public List<Product> selectProductList(int priceMax, int priceMin, String pcategory,String orderBy) {
 		StringBuilder sql= new StringBuilder("select pid,pname,pprice,pnum,pimgurl,pinfo,pcategory from tb_product  where 1=1 ");
 		List<Object> list=new ArrayList<Object>();
 		sql.append(" and pprice >= ?");
@@ -125,8 +125,8 @@ public class ProdDaoImpl implements ProdDao {
 			sql.append(" and pcategory = ?");
 			list.add(pcategory);
 		}
-		if (!VoUtils.isNull(OrderBy)){
-			sql.append(" order by "+OrderBy);
+		if (!VoUtils.isNull(orderBy)){
+			sql.append(" order by "+orderBy);
 		}
 		System.out.println("sql.toString() = " + sql);
 		return DaoUtils.query(sql.toString(),new BeanListHandle<Product>(Product.class),list.toArray());

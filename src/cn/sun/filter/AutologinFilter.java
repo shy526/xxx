@@ -13,9 +13,11 @@ import java.io.IOException;
 import java.net.URLDecoder;
 
 public class AutologinFilter implements Filter {
+    @Override
     public void destroy() {
     }
 
+    @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest  r= (HttpServletRequest) req;
         HttpSession session = r.getSession();
@@ -43,6 +45,7 @@ public class AutologinFilter implements Filter {
         chain.doFilter(req, resp);
     }
 
+    @Override
     public void init(FilterConfig config) throws ServletException {
 
     }

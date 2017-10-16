@@ -18,8 +18,9 @@ import java.io.IOException;
 @WebServlet(name = "ProductAddServlet", urlPatterns = "/ProductAddServlet")
 @MultipartConfig
 public class ProductAddServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Product product = VoUtils.ParseVo(Product.class, request.getParameterMap());
+        Product product = VoUtils.parseVo(Product.class, request.getParameterMap());
         try {
             Part img = request.getPart("pimg");
             String pprice = request.getParameter("pprice");
@@ -29,7 +30,7 @@ public class ProductAddServlet extends HttpServlet {
             if (img.getSize()<=0) {
                 throw new MsgException("图片没有上传");
             }
-            if (!img.getContentType().split("/")[0].equals("image")){
+            if (!"image".equals(img.getContentType().split("/")[0])){
                 throw new MsgException("你上传的不是图片");
             }
             product.setPimgurl(instence.saveImge(img,getServletContext().getRealPath("")));
@@ -45,6 +46,7 @@ public class ProductAddServlet extends HttpServlet {
         response.setHeader("refresh","3;url="+request.getContextPath()+"back/product_add.jsp");
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

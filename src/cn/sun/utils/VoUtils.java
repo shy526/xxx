@@ -18,7 +18,7 @@ public class VoUtils {
      * @param <T>  返回类型 依据 class
      * @return clz.newInstence
      */
-    public static <T> T ParseVo(Class<T> clz, Map<String,String[]> map){
+    public static <T> T parseVo(Class<T> clz, Map<String,String[]> map){
         T t= null;
         try {
             t = clz.newInstance();

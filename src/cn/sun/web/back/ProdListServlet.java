@@ -16,10 +16,12 @@ import java.util.List;
 
 @WebServlet(name = "ProdListServlet",urlPatterns = "/ProdListServlet")
 public class ProdListServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	doGet(request, response);
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ProdService instence = BasicFactory.factory.getInstence(ProdService.class);
         String begin = request.getParameter("begin");

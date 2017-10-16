@@ -20,15 +20,18 @@ import java.util.PriorityQueue;
 public class EncodingFilter implements Filter {
     private String encode = null;
 
+    @Override
     public void destroy() {
     }
 
+    @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         req.setCharacterEncoding(encode);
         resp.setContentType("text/html;charset=" + encode);
         chain.doFilter(new MySQR((HttpServletRequest) req), resp);
     }
 
+    @Override
     public void init(FilterConfig config) throws ServletException {
         encode = config.getInitParameter("encode");
     }

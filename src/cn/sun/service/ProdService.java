@@ -69,10 +69,10 @@ public interface ProdService {
      * @param priceMax
      * @param priceMin
      * @param pcategory
-     * @param OrderBy
+     * @param orderBy
      * @return
      */
-    List<Product> selectProductList(int priceMax, int priceMin, String pcategory,String OrderBy);
+    List<Product> selectProductList(int priceMax, int priceMin, String pcategory,String orderBy);
 
-    Product findProductById(String Id);
+    Product findProductById(String id);
 }

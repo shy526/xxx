@@ -17,11 +17,13 @@ import cn.sun.service.ProdService;
 public class UpdateProd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
  
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			String price = request.getParameter("price");
 			String pnum = request.getParameter("pnum");
 			String id= request.getParameter("pid");

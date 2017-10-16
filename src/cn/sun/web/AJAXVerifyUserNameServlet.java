@@ -12,10 +12,12 @@ import java.io.IOException;
 
 @WebServlet(name = "AJAXVerifyUserNameServlet",urlPatterns = "/AJAXVerifyUserNameServlet")
 public class AJAXVerifyUserNameServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
         UserService instence = BasicFactory.factory.getInstence(UserService.class);

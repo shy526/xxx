@@ -28,7 +28,7 @@ public class AddProduct {
            g2d.setColor(new Color(255,255,255));
            g2d.fillRect(0,0,600,600);
            g2d.setFont(new Font("微软雅黑",Font.BOLD,50));
-           g2d.setColor(new Color(RandomVerifyUtils.RandomInt(0,234),RandomVerifyUtils.RandomInt(0,234),RandomVerifyUtils.RandomInt(0,234)));
+           g2d.setColor(new Color(RandomVerifyUtils.randomInt(0,234),RandomVerifyUtils.randomInt(0,234),RandomVerifyUtils.randomInt(0,234)));
            String name = "测试商品" + Integer.toHexString(UUID.randomUUID().toString().hashCode());
            StringBuilder path = new StringBuilder("/WEB-INF/productImg");
            String str1 = Integer.toHexString(UUID.randomUUID().toString().hashCode());
@@ -49,11 +49,11 @@ public class AddProduct {
                DaoUtils.upDate(sql,
                        UUID.randomUUID().toString(),
                        name,
-                       RandomVerifyUtils.RandomInt(0, 450),
-                       RandomVerifyUtils.RandomInt(0, 10000),
+                       RandomVerifyUtils.randomInt(0, 450),
+                       RandomVerifyUtils.randomInt(0, 10000),
                        path.delete(0,new File(repath).getParentFile().getParentFile().toPath().toString().length()).toString(),
                        Integer.toHexString(UUID.randomUUID().toString().hashCode()),
-                       cate[RandomVerifyUtils.RandomInt(0, cate.length)]);
+                       cate[RandomVerifyUtils.randomInt(0, cate.length)]);
            } catch (IOException e) {
                e.printStackTrace();
            }

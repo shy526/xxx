@@ -9,10 +9,12 @@ import java.io.IOException;
 
 @WebServlet(name = "ImgServlet",urlPatterns = "/ImgServlet")
 public class ImgServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     //以后可以装防盗链
         String imgurl = request.getParameter("imgurl");

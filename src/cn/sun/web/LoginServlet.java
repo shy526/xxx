@@ -13,6 +13,7 @@ import java.net.URLEncoder;
 
 @WebServlet(name = "LoginServlet",urlPatterns = "/LoginServlet")
 public class LoginServlet extends HttpServlet {
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String uname = request.getParameter("uname");
         String upaw = request.getParameter("upaw");
@@ -45,6 +46,7 @@ public class LoginServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath()+"/index.jsp");
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
